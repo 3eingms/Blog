@@ -1,5 +1,4 @@
 
-from unicodedata import name
 from django.shortcuts import render,HttpResponseRedirect
 from .forms import SignUp,LoginForm,PostForm
 from django.contrib import messages
@@ -11,7 +10,7 @@ from django.contrib.auth.models import Group
 #home
 def home(request):
     posts = Post.objects.all()
-    return render(request,'blog/home.html',{'post':posts})
+    return render(request,'blog/index.html',{'post':posts})
 
 # about
 def about(request):
