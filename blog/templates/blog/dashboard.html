@@ -23,6 +23,13 @@
                 {{group.name}}
             {% endfor %}
             <h5 class="mt-3">Your IP : {{ip}}</h5>
+            <!-- login count -->
+            <button type="button" class="btn btn-primary position-relative mt-3">
+                login
+                <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                 {{ct}}
+                </span>
+              </button>
         </div>
 
 {% endblock side %} 

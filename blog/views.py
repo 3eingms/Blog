@@ -1,4 +1,6 @@
 
+
+from django.core.cache import cache
 from django.shortcuts import render,HttpResponseRedirect
 from .forms import SignUp,LoginForm,PostForm
 from django.contrib import messages
@@ -31,7 +33,10 @@ def dashboard(request):
         gps = user.groups.all()
         ip = request.session.get('ip',0)
         
-        return render(request,'blog/dashboard.html',{'posts':posts,'full_name':full_name,'group':gps,'ip':ip})
+        # login count
+        ct = cache.get('count',version=user.pk) 
+        
+        return render(request,'blog/dashboard.html',{'posts':posts,'full_name':full_name,'group':gps,'ip':ip,'ct':ct})
     else:
         return HttpResponseRedirect('/login/')
 
